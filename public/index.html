@@ -10,49 +10,73 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="./js/responder.js"></script>
     <!-- Material Design Bootstrap -->
   </head>
   <div class="container" style="padding-top: 50px;">
     <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">English Movie</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">English TV Series</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian  Documentary</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian Movie</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian Short Documentary</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian Short Movie</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian TV Series</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Watched By Chai</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Art House Cinema</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Commercial</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Documentary</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Hindi</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">English</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Bengali</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">DVD Available</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Top ranked</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Viewable on Amazon</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Viewable on Netflix</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Viewable on Hulu</label><br>
-    
+      <form name="advancedSearch">
+
+        <input type="checkbox" class="form-check-input" name="english_movie" id="english_movie">
+        <label class="form-check-label" for="english_movie">English Movie</label><br>
+
+        <input type="checkbox" class="form-check-input" name="english_tv" id="english_tv">
+        <label class="form-check-label" for="english_tv">English TV Series</label><br>
+
+        <input type="checkbox" class="form-check-input" name="indian_doc" id="indian_doc">
+        <label class="form-check-label" for="indian_doc">Indian  Documentary</label><br>
+
+        <input type="checkbox" class="form-check-input" name="indian_movie" id="indian_movie">
+        <label class="form-check-label" for="indian_movie">Indian Movie</label><br>
+
+        <input type="checkbox" class="form-check-input" name="indian_short_doc" id="indian_short_doc">
+        <label class="form-check-label" for="indian_short_doc">Indian Short Documentary</label><br>
+
+        <input type="checkbox" class="form-check-input" name="indian_short_movie" id="indian_short_movie">
+        <label class="form-check-label" for="indian_short_movie">Indian Short Movie</label><br>
+
+        <input type="checkbox" class="form-check-input" name="indian_tv" id="indian_tv">
+        <label class="form-check-label" for="indian_tv">Indian TV Series</label><br>
+
+        <input type="checkbox" class="form-check-input" name="watched_by_cwp" id="watched_by_cwp">
+        <label class="form-check-label" for="watched_by_cwp">Watched By Chai</label><br>
+
+        <input type="checkbox" class="form-check-input" name="art_house" id="art_house">
+        <label class="form-check-label" for="art_house">Art House Cinema</label><br>
+
+        <input type="checkbox" class="form-check-input" name="commercial" id="commercial">
+        <label class="form-check-label" for="commercial">Commercial</label><br>
+
+        <input type="checkbox" class="form-check-input"name="documentary" id="documentary">
+        <label class="form-check-label" for="documentary">Documentary</label><br>
+
+        <input type="checkbox" class="form-check-input" name="hindi" id="hindi">
+        <label class="form-check-label" for="hindi">Hindi</label><br>
+
+        <input type="checkbox" class="form-check-input" name="english" id="english">
+        <label class="form-check-label" for="english">English</label><br>
+
+        <input type="checkbox" class="form-check-input" name="bengali" id="bengali">
+        <label class="form-check-label" for="bengali">Bengali</label><br>
+
+        <input type="checkbox" class="form-check-input" name="dvd_available" id="dvd_available">
+        <label class="form-check-label" for="dvd_available">DVD Available</label><br>
+
+        <input type="checkbox" class="form-check-input" name="top_ranked" id="top_ranked">
+        <label class="form-check-label" for="top_ranked">Top ranked</label><br>
+
+        <input type="checkbox" class="form-check-input" name="amazon" id="amazon">
+        <label class="form-check-label" for="amazon">Viewable on Amazon</label><br>
+
+        <input type="checkbox" class="form-check-input" name="netflix" id="netflix">
+        <label class="form-check-label" for="netflix">Viewable on Netflix</label><br>
+
+        <input type="checkbox" class="form-check-input" name="hulu" id="hulu">
+        <label class="form-check-label" for="hulu">Viewable on Hulu</label><br>
+
+        <input type="button" value="Fuck" onclick="validateForm()">
+      </form>
   </div>
   
 
@@ -63,5 +87,25 @@
   
 
   </body>
+
+  <script type="text/javascript">
+    var url = window.location.href;
+    var arr = url.split("/");
+    var result = arr[0] + "//" + arr[2];
+    const socket = io.connect(result);
+
+    function validateForm() {
+      let object = {};
+      let form = document.forms['advancedSearch'];
+      Array.from(form.elements).forEach((input) => {
+        if (input.type === "checkbox") {
+          object[input.name] = input.checked;
+        }
+      });
+
+      socket.emit('process', object);
+    }
+
+  </script>
 
 </html>

@@ -220,41 +220,13 @@ function filterMap(hashMap, searchParam, searchTerm) {
     return filtered;
 }
 
+io.on('connection', function (socket) {
+    socket.on('process', function(data) {
+        console.log(data);
+    });
+});
 
 app.use(express.static(__dirname + '/public'));
 server.listen(process.env.PORT || 8080, () => {
     console.log('Server listening at [http://localhost:%d]', process.env.PORT || 8080);
 });
-
-
-//overall genre
-var englishMovie
-var englishTVSeries
-var indianDoc
-var IndianMovie
-var indianShortDoc
-var indianShortMovie
-var indianTVSeries
-var blankGenre
-//watched by chai with papa
-var watchedByChai
-var watchedBlank
-//country
-//production genre
-var arthousecinema
-var commercial
-var documentary 
-var productionBlank
-//language
-var hindi
-var bengali
-var english
-//Dvd available?
-var yesDvd
-var blankDvd
-//included in top rank
-var topRanked
-//platform to view title
-var amazon
-var netflix
-var hulu
