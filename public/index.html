@@ -94,6 +94,17 @@
     var result = arr[0] + "//" + arr[2];
     const socket = io.connect(result);
 
+    socket.on('logMap', function (data) {
+      var map = new Map();
+      data.forEach((result) => {
+        result.forEach((entry) => {
+          map.set(entry[0], entry[1]);
+        })
+      });
+
+      console.log(map);
+    });
+
     function validateForm() {
       let object = {};
       let form = document.forms['advancedSearch'];

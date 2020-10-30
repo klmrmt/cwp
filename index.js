@@ -7,6 +7,28 @@ var io = require('socket.io')(server);
 // Initial data struct of movie repository
 let objectInterface = new Map();
 
+const searchMap = {
+    english_movie: {key:'overall_genre', value:'english movie'},
+    english_tv: {key:'overall_genre', value:'english tv'},
+    indian_doc: {key:'overall_genre', value:'indian documentary'},
+    indian_movie: {key:'overall_genre', value:'indian movie'},
+    indian_short_doc: {key:'overall_genre', value:'indian short documentary'},
+    indian_short_movie: {key:'overall_genre', value:'indian short movie'},
+    indian_tv: {key:'overall_genre', value:'indian tv'},
+    watched_by_cwp: {key:'watched_by_cwp', value:'yes'},
+    art_house: {key:'production_genre', value:'Art House'},
+    commercial: {key:'production_genre', value:'commercial'},
+    documentary: {key:'production_genre', value:'documentary'},
+    hindi: {key:'language', value:'hindi'},
+    english: {key:'language', value:'english'},
+    bengali: {key:'language', value:'bengali'},
+    dvd_available: {key:'dvd_available', value:'yes'},
+    top_ranked: {key:'include_in_top', value:'yes'},
+    amazon: {key:'platforms', value:'amazon'},
+    netflix: {key:'platforms', value:'netflix'},
+    hulu: {key:'platforms', value:'hulu'},
+}
+
 const xlsxFile = require('read-excel-file/node');
 const { title } = require('process');
 xlsxFile('./chaiwithpapa.xlsx').then((rows) => {
@@ -220,9 +242,31 @@ function filterMap(hashMap, searchParam, searchTerm) {
     return filtered;
 }
 
+async function recursiveSearch(object) {
+    let recursiveMap = [];
+    return new Promise(resolve => {
+        for (const property in object) {
+            let key = property;
+            let value = object[property];
+    
+            if (value) {
+                let map = filterMap(objectInterface, searchMap[key].key, searchMap[key].value);
+                recursiveMap.push(map);
+            }
+        }
+        resolve(recursiveMap);
+    });
+}
+
 io.on('connection', function (socket) {
     socket.on('process', function(data) {
-        console.log(data);
+        recursiveSearch(data).then((result) => {
+            let transitArray = [];
+            for (var i = 0; i < result.length; i++) {
+                transitArray.push(Array.from(result[i]));
+            }
+            socket.emit('logMap', transitArray);
+        });
     });
 });
 
