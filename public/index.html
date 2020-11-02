@@ -1,67 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <title>Chai With Papa</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-  </head>
-  <div class="container" style="padding-top: 50px;">
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">English Movie</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">English TV Series</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian  Documentary</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian Movie</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian Short Documentary</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian Short Movie</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Indian TV Series</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Watched By Chai</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Art House Cinema</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Commercial</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Documentary</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Hindi</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">English</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Bengali</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">DVD Available</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Top ranked</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Viewable on Amazon</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Viewable on Netflix</label><br>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Viewable on Hulu</label><br>
-    
+</head>
+
+<body>
+  <script>
+    $(document).ready(function() {
+      if (sessionStorage.getItem('#myModal') !== 'true') {
+        $('#myModal').modal('show');
+        sessionStorage.setItem('#myModal','true');
+      }
+    });
+  </script>
+
+  <!-- Onload Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Complete before entering website</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="checkbox" id="privacy">
+            <label for="html">I have read the <a class ="aModal" href="documents/ChaiWithPapa Privacy Policy 11_1_2020.docx">Privacy Agreement</a></label>
+          </div>
+          <div class="form-group">
+            <input type="checkbox" id="terms">
+            <label for="css">I have read the <a class = "aModal" href="documents/ChaiWithPapa Terms&Conditions Policy 11_1_2020.docx">Terms & Conditions</a></label>
+          </div>
+          <div class="form-group">
+            <input type="checkbox" id="age">
+            <label for="javascript">I am 18 years or older</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="padding-top: 0; padding-bottom: 0;">
+    <a class="navbar-brand" href="#"><img class="logo-nav" src="images/logo-blue.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about-chai.html">About Papa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="search.html">Search Movies</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- second navbar -->
+  <div class="container-fluid">
+    <div id="mySidenav" class="sidenav">
+       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+       <a href="internationalfilms.html">International Film Festivals</a>
+       <a href="recentlyadded.html">Recently Added Titles/ Trailers</a>
+       <a href="extrainfo.html">Additional Information</a>
+    </div>
+    <span style="font-size: 30px; cursor: pointer; padding-left: 20px;" onclick="openNav()">&#9776;</span>
   </div>
-  
 
-
-
+  <!-- Main categories broken up by using col-lg-3 and col-md-6 and then col-sm-12 -->
+  <div class="container-fluid topBuffer">
+    <h3 class="text-center" style="margin-bottom: 10px;">Top Chai Ratings</h3>
+    <div class="row text-center">
+      <div class="col-lg-3 col-md-6 d-flex justify-content-center topBuffer" style="padding-left:0; padding-right: 0;">
+        <div class="card shadow-lg" style="width: 18rem;">
+          <div class="card-body" >
+            <h5 class="card-title">Indian Art House Cinema</h5>
+          </div>
+          <a href="top-chai.html"><img class="card-img-top cropped" src="images/Indian Art House Cinema.jpg" alt="Card image cap"></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex justify-content-center topBuffer" style="padding-left:0; padding-right: 0;">
+        <div class="card shadow-lg" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Indian Documentaries</h5>
+          </div>
+          <a href="#"><img class="card-img-top cropped" src="images/Indian Documentaries.jpg" alt="Card image cap"></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex justify-content-center topBuffer" style="padding-left:0; padding-right: 0;">
+        <div class="card shadow-lg" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Indian Short Documentaries</h5>
+          </div>
+          <a href="#"><img class="card-img-top cropped" src="images/Indian Short Documentaries.jpg" alt="Card image cap"></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex justify-content-center topBuffer" style="padding-left:0; padding-right: 0;">
+        <div class="card shadow-lg" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Indian Short Movies</h5>
+          </div>
+          <a href="#"><img class="card-img-top cropped" src="images/Indian Short Movies.jpg" alt="Card image cap"></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex justify-content-center topBuffer" style="padding-left:0; padding-right: 0;">
+        <div class="card shadow-lg" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Indian TV Series</h5>
+          </div>
+          <a href="#"><img class="card-img-top cropped" src="images/Indian TV Series.jpg" alt="Card image cap"></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex justify-content-center topBuffer" style="padding-left:0; padding-right: 0;">
+        <div class="card shadow-lg" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Indian Commercial Movies</h5>
+          </div>
+          <a href="#"><img class="card-img-top cropped" src="images/Indian Commercial Movies.jpg" alt="Card image cap"></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex justify-content-center topBuffer" style="padding-left:0; padding-right: 0;">
+        <div class="card shadow-lg" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">English TV Series</h5>
+          </div>
+          <a href="#"><img class="card-img-top cropped" src="images/English TV Series.jpg" alt="Card image cap"></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex justify-content-center topBuffer" style="padding-left:0; padding-right: 0;">
+        <div class="card shadow-lg" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">English Commercial Movies</h5>
+          </div>
+          <a href="#"><img class="card-img-top cropped" src="images/English Commercial Movies.jpg" alt="Card image cap"></a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  
+  <footer class="footer" style="margin-top: 25px; padding-top: 25px; padding-bottom: 25px;">
+    <div class="container">
+      <a href="documents/ChaiWithPapa Terms&Conditions Policy 11_1_2020.docx"><p class="p1">Terms & Conditions </p></a>
+      <a href="documents/ChaiWithPapa Privacy Policy 11_1_2020.docx"><p class="p1">Privacy Terms</p></a>
 
-  </body>
+    </div>
+  </footer>
 
+
+<script type="text/javascript">
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
+
+<script src="js/bootstrap.min.js"></script>
+</body>
 </html>

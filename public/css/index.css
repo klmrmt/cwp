@@ -1,0 +1,136 @@
+h5{
+  font-family: 'Open Sans', sans-serif;
+}
+h3{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+p{
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+a{
+  color: white;
+}
+a:hover{
+  color: #4c81b1;
+}
+.aModal{
+  color: #111;
+}
+.cropped{
+  border-radius: 0 0 20px 20px;
+  height: 200px;
+}
+
+/* card  */
+.card-title{
+  padding-bottom: 0;
+}
+.card{
+  border-radius: 20px;
+  position: relative;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: all 0.3s ease-in-out;
+}
+.card-body{
+  padding-top: 10px;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.card:after{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease-in-out;
+}
+.card:hover{
+  transform: scale(1.2, 1.2);
+}
+.card:hover::after{
+  opacity: 1;
+
+}
+/* card end */
+
+
+
+/* navbar */
+.bg-light{
+  background-color: #24272B !important;
+}
+.topBuffer{
+  margin-top: 25px;
+}
+.logo-nav{
+  height: 50px;
+  width: 50px;
+}
+/* navbar end */
+/* footer */
+.footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #24272B;
+   color: white;
+   text-align: center;
+}
+.p1{
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+a{
+  color: white;
+}
+a:hover{
+  color: #4c81b1;
+}
+/* footer end */
+
+/* sidenav */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* sidenav end */
