@@ -6,7 +6,7 @@ var io = require('socket.io')(server);
 
 // Initial data struct of movie repository
 let objectInterface = new Map();
-
+const searchTypes = ['overall_genre', 'language', 'production_genre', 'watched_by_cwp', 'include_in_top', 'dvd_available', 'platforms'];
 const searchMap = {
     // Overall Genre
     english_movie: {key:'overall_genre', value:'english movie'},
@@ -20,6 +20,7 @@ const searchMap = {
     // Watched by CWP
     watched_no: {key:'watched_by_cwp', value:'no'},
     watched_yes: {key:'watched_by_cwp', value:'yes'},
+    watched_queue: {key:'watched_by_cwp', value:'queue'},
     watched_blank: {key:'watched_by_cwp', value:''},
     // Production Genre
     prod_Art_House: {key:'production_genre', value:'Art House'},
@@ -282,9 +283,8 @@ xlsxFile('./chaiwithpapa.xlsx').then((rows) => {
 });
 
 function filterMap(hashMap, searchParam, searchTerm) {
-    //console.log(searchTerm);
-    // TODO: Recursive loop through iteration object on dynamic search criteria
-    // TODO: Decision matrix against preset search fields
+    // DONE: Recursive loop through iteration object on dynamic search criteria
+    // DONE: Decision matrix against preset search fields
     // TODO: JSON.Stringify? Number parser for <=> operations
 
     // Create filtered hashMap reference, iterating parsed map as object
@@ -302,31 +302,104 @@ function filterMap(hashMap, searchParam, searchTerm) {
     return filtered;
 }
 
-async function recursiveSearch(object) {
-    let recursiveMap = [];
+function recursiveSearch(object) {
+    // Initial state of recursively searched map
+    let recursiveMap = [objectInterface];
+    // Initial index state through searchTypes
+    let elementIndex = 0;
+
+    // Returned promise of search result
     return new Promise(resolve => {
+        // Structure calls to recursive mutuallyExclusive search function
+        function doSearch(element) {
+            // Returned promise for result from recursive_meSearch()
+            return new Promise(resolve => {
+                // Search for each element that falls under a singular mutually exclusive category, wait for result
+                recusive_meSearch(element, object, recursiveMap[recursiveMap.length - 1]).then((result) => {
+                    // On retrieval of result, iterate up elementIndex
+                    elementIndex += 1;
+                    // If the result has been filtered, add the new filtered map to the recursive tree otherwise do nothing
+                    if (result.filtered) {
+                        recursiveMap.push(result.map);
+                    }
+                    // If no checkboxes were checked on advanced search, return a blank map
+                    if (result.noneChecked) {
+                        resolve(new Map());
+                    } else {
+                        // Return most recent instance of the filtered map under the recursive tree
+                        resolve(recursiveMap[recursiveMap.length - 1]);
+                    }
+                });
+            });
+        }
+
+        // Iterative search function to collapse asynchronous state into a single synchronous set
+        function iterativeSearch() {
+            // Search indexed tree against element 0
+            doSearch(searchTypes[elementIndex]).then((res) => {
+                // If the function has not reached the end of all search fields, iterate until it has
+                if (elementIndex === searchTypes.length) {
+                    // Return array condensed iterated result
+                    resolve([res]);
+                } else {
+                    iterativeSearch();
+                }
+            });
+        }
+
+        // Start single state iterative search
+        iterativeSearch();
+    });
+
+}
+
+// Asynchronous mutually exclusive search function
+async function recusive_meSearch(element, object, map) {
+    // Create a new map holding the result from the filter on the main data store
+    let mutuallyExclusive = new Map();
+    // Check against if there has been a filtered result received
+    let beenFiltered = false;
+    return new Promise(resolve => {
+        // Iterate through checkbox object
         for (const property in object) {
             let key = property;
             let value = object[property];
-
-            if (value === true) {
-                let map = filterMap(objectInterface, searchMap[key].key, searchMap[key].value);
-                recursiveMap.push(map);
-            }
+            try {
+                // If the search field matches the current search index and the value has been checked => proceed to search
+                if (searchMap[key].key.toString().toLowerCase() === element.toString().toLowerCase() && value === true) {
+                    // Update filtered status to true
+                    beenFiltered = true;
+                    // Filter from data store based on key-state parameters
+                    let filtMap = filterMap(map, searchMap[key].key, searchMap[key].value);
+                    // Update the mutuallyExlusive map with the filtered result
+                    filtMap.forEach((v, k) => mutuallyExclusive.set(k, v));
+                }
+            } catch { /* Stop error propogation */ }
         }
-        resolve(recursiveMap);
+        // Resolve a data object containing the hashMap for the filtered result, and consecutive states for if the map has been filtered, allChecked and noneChecked
+        resolve({'map': mutuallyExclusive, 'filtered': beenFiltered, 'allChecked': object.allChecked, 'noneChecked': object.noneChecked});
     });
+    
 }
 
 io.on('connection', function (socket) {
+    // On receive of the 'advanced_search' command from the client perform a recursiveSearch 
     socket.on('advanced_search', function(data) {
-        recursiveSearch(data).then((result) => {
-            let transitArray = [];
-            for (var i = 0; i < result.length; i++) {
-                transitArray.push(Array.from(result[i]));
-            }
-            socket.emit('advanced_search_response', transitArray);
-        });
+        // If no checkboxes ticked, don't search (for efficiency)
+        if (data.noneChecked) {
+            transitArray = [new Map()];
+            socket.emit('advanced_search_response', Array.from(transitArray[0]));
+        } else {
+            // Recursively search through the data store
+            recursiveSearch(data).then((result) => {
+                let transitArray = [];
+                for (var i = 0; i < result.length; i++) {
+                    transitArray.push(Array.from(result[i]));
+                }
+                // Emit condensed Map under ES6 JSON standard
+                socket.emit('advanced_search_response', transitArray);
+            });
+        }
     });
 });
 

@@ -473,9 +473,16 @@
           function validateForm() {
             let object = {};
             let form = document.forms['advancedSearch'];
+            object['allChecked'] = true;
+            object['noneChecked'] = true;
             Array.from(form.elements).forEach((input) => {
               if (input.type === "checkbox") {
                 object[input.name] = input.checked;
+                if (!input.checked) {
+                  object.allChecked = false;
+                } else {
+                  object.noneChecked = false;
+                }
               }
             });
             console.log(object);
