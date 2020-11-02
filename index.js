@@ -229,7 +229,7 @@ xlsxFile('./chaiwithpapa.xlsx').then((rows) => {
 function filterMap(hashMap, searchParam, searchTerm) {
     // TODO: Recursive loop through iteration object on dynamic search criteria
     // TODO: Decision matrix against preset search fields
-    // TODO: JSON.Stringify? Number parser for <=> operations 
+    // TODO: JSON.Stringify? Number parser for <=> operations
 
     // Create filtered hashMap reference, iterating parsed map as object
     const filtered = new Map([...hashMap].filter(([key, value]) => {
@@ -248,7 +248,7 @@ async function recursiveSearch(object) {
         for (const property in object) {
             let key = property;
             let value = object[property];
-    
+
             if (value) {
                 let map = filterMap(objectInterface, searchMap[key].key, searchMap[key].value);
                 recursiveMap.push(map);
@@ -259,13 +259,13 @@ async function recursiveSearch(object) {
 }
 
 io.on('connection', function (socket) {
-    socket.on('process', function(data) {
+    socket.on('advanced_search', function(data) {
         recursiveSearch(data).then((result) => {
             let transitArray = [];
             for (var i = 0; i < result.length; i++) {
                 transitArray.push(Array.from(result[i]));
             }
-            socket.emit('logMap', transitArray);
+            socket.emit('advanced_search_response', transitArray);
         });
     });
 });
