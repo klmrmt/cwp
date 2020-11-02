@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Chai With Papa</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/extrainfo.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main-table.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="perfect-scrollbar/perfect-scrollbar.css">
+</head>
+
+<body>
+  <style>
+          body {
+              animation: fadeInAnimation ease 2s;
+              animation-iteration-count: 1;
+              animation-fill-mode: forwards;
+          }
+          @keyframes fadeInAnimation {
+              0% {
+                  opacity: 0.5;
+              }
+              100% {
+                  opacity: 1;
+              }
+          }
+          .search-table{
+            padding: 10%;
+            margin-top: -6%;
+          } 
+  </style>
+
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-light" style="padding-top: 0; padding-bottom: 0;">
+    <a class="navbar-brand" href="#"><img class="logo-nav" src="images/logo-blue.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about-chai.html">About Papa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="search.html">Search Movies</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+<!-- extra info table -->
+<div class="limiter">
+  <div class="container-table100">
+    <h3 style="padding-bottom: 50px; padding-top:30px;">History of Indian Art House Cinema</h3>
+
+    <div class="wrap-table100">
+      <div class="table100 ver2 m-b-110">
+        <div class="table100-head">
+          <table>
+            <thead>
+              <tr class="row100 head">
+                <th class="cell100 column1">Link</th>
+                <th class="cell100 column2">Media</th>
+                <th class="cell100 column3">Topic</th>
+                <th class="cell100 column3">Length</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="table100-body js-pscroll">
+          <table>
+            <tbody>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.manifestias.com/2019/01/01/1447/#:~:text=Parallel%20cinema%20is%20a%20film,cinema%2C%20known%20today%20as%20Bollywood.">Manifesta</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">What is Parallel Indian  Cinema</td>
+                <td class="cell100 column2">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.republicworld.com/entertainment-news/bollywood-news/parallel-cinema-everything-you-need-to-know-about-the-art-form.html">Republic World</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">What is Parallel Indian  Cinema</td>
+                <td class="cell100 column2">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=mrtnTSp77e0">Youtube</a></td>
+                <td class="cell100 column2">Website Audio</td>
+                <td class="cell100 column3">What is Parallel Indian  Cinema</td>
+                <td class="cell100 column4">22 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.livemint.com/mint-lounge/features/the-sounds-of-parallel-cinema-1556865844882.html">Livemint</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Music in Indian Parallel Cinema</td>
+                <td class="cell100 column4">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=xgmmi0CmiMg&t=1522s">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Hindi Parallel Cinema Dr. Manoj Sharma</td>
+                <td class="cell100 column4">58 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=sxNSHReDZg8">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">100 Years of Indian Cinema: Dr. Manoj Sharma</td>
+                <td class="cell100 column4">56 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=7AclnThwO74">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Film and Television Institute of India Pune</td>
+                <td class="cell100 column4">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.bbc.com/news/world-asia-india-28122756">BBC</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">How India's film festival boom is boosting indie cinema</td>
+                <td class="cell100 column4">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://thirdcinema.wordpress.com/2015/10/27/indias-parallel-cinema/">Third Cinema</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">History of Indian Parallel Cinema</td>
+                <td class="cell100 column4">15 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://books.google.com/books?id=gLdTDAAAQBAJ&pg=PA105&lpg=PA105&dq=Discussion+on+indian+independent+cinema&source=bl&ots=PPAsPQ04RT&sig=B1MLP5Iv38LflQkX5tUxPrGjUPI&hl=en&sa=X&ved=0ahUKEwiLt5nJt-jSAhUMw4MKHUYmB1IQ6AEIOTAF#v=onepage&q=Discussion%20on%20indian%20independent%20cinema&f=false">Books</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Excerpts from a Book on Indian Parallel Cinema  </td>
+                <td class="cell100 column4">15 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://en.wikipedia.org/wiki/Parallel_cinema">Wikipedia</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">What is Parallel Cinema Indian</td>
+                <td class="cell100 column4">10 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.indianetzone.com/70/parallel_cinema_india.htm">Indianetzone</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">What is Parallel Cinema Indian</td>
+                <td class="cell100 column4">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://learningandcreativity.com/silhouette/the-state-of-independent-cinema-in-india/">Learning & Creatvity</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">The State of Independent Cinema in India</td>
+                <td class="cell100 column4">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.imdb.com/list/ls070535925/">IMDB</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Greatest Directors of Hindi Art Cinema</td>
+                <td class="cell100 column4">15 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.imdb.com/list/ls070535817/">IMDB</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Greatest Directors of Bengali Art Cinema</td>
+                <td class="cell100 column4">15 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=93VUVyiv9sM">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Aparna Sen: Great Directors Indian Art Movies: </td>
+                <td class="cell100 column4">4 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=-4Ppr3KSoMA">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Govind Nihalani: Great Directors Indian Art Movies: </td>
+                <td class="cell100 column4">3 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.filmcompanion.in/features/mrinal-sen-didnt-make-movies-he-made-cinema/">FilmCon</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Mrinal Sen: Great Directors Indian Art Movies: </td>
+                <td class="cell100 column4">11 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=Ic-sGTnbF-8">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Mrinal Sen: Great Directors Indian Art Movies: </td>
+                <td class="cell100 column4">18 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=3iHsWhpRiEA">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Mrinal Sen: Great Directors Indian Art Movies: </td>
+                <td class="cell100 column4">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=42yelaun0_8">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Ritwik Ghatak: Great Directors Indian Art Movies: </td>
+                <td class="cell100 column4">38 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=6RcBf-r80OU&list=PLzPr9EmrMDW2BQQ1OEA63HGT3ijaSGGzt">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Satyajit Ray: Great Directors Indian Art Movies: </td>
+                <td class="cell100 column4">2:17 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=xk5ZtU7xVQg">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Satyajit Ray: Great Directors Indian Art Movies: </td>
+                <td class="cell100 column4">19 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=dEEPJOlcIPY&list=PLm63r2CEQijIwJQNIN9aXpbrYwKQqYrXO&index=58&t=0s">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Shyam Benegal: Great Director Indian Art Movies</td>
+                <td class="cell100 column4">38 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=IDbuGpkC4Zs">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Shyam Benegal: Great Director Indian Art Movies</td>
+                <td class="cell100 column4">5 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href=""></a></td>
+                <td class="cell100 column2"></td>
+                <td class="cell100 column3"></td>
+                <td class="cell100 column4"></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-table100">
+    <h3 style="padding-bottom: 50px; ">YoutTube Videos on Indian Art House Cinema</h3>
+
+    <div class="wrap-table100">
+      <div class="table100 ver2 m-b-110">
+        <div class="table100-head">
+          <table>
+            <thead>
+              <tr class="row100 head">
+                <th class="cell100 column1">Link</th>
+                <th class="cell100 column2">Media</th>
+                <th class="cell100 column3">Topic</th>
+                <th class="cell100 column3">Length</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="table100-body js-pscroll">
+          <table>
+            <tbody>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=Ps9B7RkmWRU">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Farooq Shaikh: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">7 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=_ENzPxQqG70">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Kon Kona Sen Sharma: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">30 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=aG_OmCUZRMU">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Naseeruddin Shah: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">2 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=YFA7t8zS2k0">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Naseeruddin Shah: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">60 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=3-4VjMgnnRQ">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Naseeruddin Shah: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">1:12 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=gDXwrYV7YtI">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Om Puri: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">4 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=AYy6GmJzYyo">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Shabana Azmi: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">10 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=utu3lENqFqk">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Shabana Azmi: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">58 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=dEEPJOlcIPY&list=PLm63r2CEQijIwJQNIN9aXpbrYwKQqYrXO&index=58&t=0s">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Shabana Azmi: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">38 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=rW8QblriX9M">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Smita Patil: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">3 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=GUvXnoMFn5I">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Smita Patil: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">15 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.youtube.com/watch?v=9pNhEbfgM5E">Youtube</a></td>
+                <td class="cell100 column2">You Tube Video</td>
+                <td class="cell100 column3">Smita Patil: Indian Art House Cinema Actors</td>
+                <td class="cell100 column4">29 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href=""></a></td>
+                <td class="cell100 column2"></td>
+                <td class="cell100 column3"></td>
+                <td class="cell100 column4"></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-table100">
+    <h3 style="padding-bottom: 50px; ">Indian Art House Cinema Lists</h3>
+
+    <div class="wrap-table100">
+      <div class="table100 ver2 m-b-110">
+        <div class="table100-head">
+          <table>
+            <thead>
+              <tr class="row100 head">
+                <th class="cell100 column1">Link</th>
+                <th class="cell100 column2">Media</th>
+                <th class="cell100 column3">Topic</th>
+                <th class="cell100 column3">Length</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="table100-body js-pscroll">
+          <table>
+            <tbody>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.imdb.com/list/ls009109878/">IMDB</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Top List: The Alternate/ parallel Cinema. IMDb</td>
+                <td class="cell100 column4">15 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.imdb.com/list/ls009109878/">Indian Express</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Top List: Our ultimate guide to the 1970-80s parallel cinema gems</td>
+                <td class="cell100 column4">30 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.livemint.com/mint-lounge/features/50-years-of-hindi-alternative-cinema-1556870638279.html">Live Mint</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Top List: 50 years of Hindi alternative cinema</td>
+                <td class="cell100 column4">26 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.imdb.com/list/ls070535657/">IMDB</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Top List: Greatest Art Films in Indian Cinema. IMDb.</td>
+                <td class="cell100 column4">30 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.scoopwhoop.com/the-best-of-parallel-cinema/">Scoop Whoop</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Top List: Picks of Indian Art House Movies</td>
+                <td class="cell100 column4">10 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.highonfilms.com/the-10-best-shyam-benegal-movies/?fbclid=IwAR37Z1xvXlMFCYY1feSt_UC0hGEqO_Re9rBeOSUA9iZUHNQcyhMDrCEz4vA">High on Films</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Top List: Shyam Benegal</td>
+                <td class="cell100 column4">10 min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.plumeriamovies.com/greatest-indian-movies-of-all-time/">Plumeria Movies</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">25 Greatest Movies</td>
+                <td class="cell100 column4">10 min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.highonfilms.com/the-10-best-shyam-benegal-movies/?fbclid=IwAR2DaXeVEQXdcFv0Tzbcn4Py-9voHfCDylnPTf3Rmnp8CP8QPdhor-V8cVc">High on Films</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">Shyam Benegal 10 Movies</td>
+                <td class="cell100 column4">10 min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://indianexpress.com/article/entertainment/web-series/cinemapreneur-a-new-ott-platform-is-solely-dedicated-to-indian-indie-films-6553331/">Indian Express</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">New Site for viewing Independent Cinema</td>
+                <td class="cell100 column4">5 min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://arthousecinema.in/">Art House Cinema</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">List of Art House Cinema</td>
+                <td class="cell100 column4">15 Min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.forbes.com/sites/swetakaushal/2020/08/21/cinemapreneur-a-special-ott-for-indie-cinema-that-promises-fair-revenue-share-for-filmmakers/#20ef25f615cf">Forbes</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">New Site for viewing Independent Cinema</td>
+                <td class="cell100 column4">5 min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href="https://www.filmcompanion.in/streaming/satyajit-ray-movies-on-youtube-hotstar-hoichoi-apu-trilogy-charulata-shatranj-ke-khiladi/#TamilFilms">Film Companion</a></td>
+                <td class="cell100 column2">Website Read</td>
+                <td class="cell100 column3">List of Satyajit Ray Movies</td>
+                <td class="cell100 column4">10 min</td>
+              </tr>
+              <tr class="row100 body">
+                <td class="cell100 column1"><a href=""></a></td>
+                <td class="cell100 column2"></td>
+                <td class="cell100 column3"></td>
+                <td class="cell100 column4"></td>
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<footer class="footer" style="margin-top: 25px; padding-top: 25px; padding-bottom: 25px;">
+  <div class="container">
+    <a href="documents/ChaiWithPapa Terms&Conditions Policy 11_1_2020.docx"><p class="p1">Terms & Conditions </p></a>
+    <a href="documents/ChaiWithPapa Privacy Policy 11_1_2020.docx"><p class="p1">Privacy Terms</p></a>
+
+  </div>
+</footer>
+</body>
+</html>

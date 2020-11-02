@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main-table.css">
   <link rel="stylesheet" href="css/search.css">
   <script src="/socket.io/socket.io.js"></script>
+
 <!--===============================================================================================-->
 </head>
 
@@ -52,6 +53,8 @@
             font-style: italic;
           }
   </style>
+  
+  
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="padding-top: 0; padding-bottom: 0;">
     <a class="navbar-brand" href="#"><img class="logo-nav" src="images/logo-blue.png" alt=""></a>
@@ -86,272 +89,270 @@
       </div>
     </form>
     <form name="advancedSearch">
-    <div class="form-check container">
-      <div class="row">
-        <div class="col-lg-3">
-          <h5>Overall Genre</h5>
-          <input class="form-check-input" type="checkbox" value="" name="english_movie" id="english_movie">
-          <label class="form-check-label" for="enlish_movie">
-            English Movie
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="english_tv" id="english_tv">
-          <label class="form-check-label" for="english_tv">
-            English TV Series
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="indian_doc" id="indian_doc">
-          <label class="form-check-label" for="indian_doc">
-            Indian Documentary
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="indian_movie" id="indian_movie">
-          <label class="form-check-label" for="indian_movie">
-            Indian Movie
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="indian_short_doc" id="indian_short_doc">
-          <label class="form-check-label" for="indian_short_doc">
-            Indian Short Documentary
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="indian_short_movie" id="indian_short_movie">
-          <label class="form-check-label" for="defaultCheck1">
-            Indian Short Movie
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="indian_tv" id="indian_tv">
-          <label class="form-check-label" for="indian_tv">
-            Indian TV Series
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="genre_blank" id="genre_blank">
-          <label class="form-check-label" for="genre_blank">
-            Blank
-          </label><br>
-          <h5>Country/ Language Theme</h5>
-          <input class="form-check-input" type="checkbox" value="" name="santali" id="santali">
-          <label class="form-check-label" for="Santali">
-            Santali
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="arabic" id="arabic">
-          <label class="form-check-label" for="arabic">
-            Arabic
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="assamesse" id="assamese">
-          <label class="form-check-label" for="assamese">
-            Assamese
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="bengali" id="bengali">
-          <label class="form-check-label" for="bengali">
-            Bengali
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="bhojpuri" id="bhojpuri">
-          <label class="form-check-label" for="bhojpuri">
-            Bhojpuri
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="bodo_assamese"id="bodo_assamese">
-          <label class="form-check-label" for="bodo_assamese">
-            Bodo,Assamese
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="english" id="english">
-          <label class="form-check-label" for="english">
-            English
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="french" id="french">
-          <label class="form-check-label" for="french">
-            French
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="german" id="german">
-          <label class="form-check-label" for="german">
-            German
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="gujarati" id="gujarati">
-          <label class="form-check-label" for="gujarati">
-            Gujarati
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="hebrew" id="hewbrew">
-          <label class="form-check-label" for="hebrew">
-            Hebrew
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="hindi" id="hindi">
-          <label class="form-check-label" for="hindi">
-            Hindi
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="hindi_marathi" id="hindi_marathi">
-          <label class="form-check-label" for="hindi_marathi">
-            Hindi, Marathi
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="hindi_assamese" id="hindi_assamese">
-          <label class="form-check-label" for="hindi_assamese">
-            Hindi/Assamese
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="italian" id="italian">
-          <label class="form-check-label" for="italian">
-            Italian
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="kannada" id="kannada">
-          <label class="form-check-label" for="kannada">
-            Kannada
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="khasi" id="khasi">
-          <label class="form-check-label" for="khasi">
-            Khasi
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="konkani" id="konkani">
-          <label class="form-check-label" for="konkani">
-            Konkani
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="maithili" id="maithili">
-          <label class="form-check-label" for="maithili">
-            Maithili
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="malayalam" id="malayalam">
-          <label class="form-check-label" for="defaultCheck1">
-            Malayalam
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="manipuri" id="manipuri">
-          <label class="form-check-label" for="defaultCheck1">
-            Manipuri
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="marathi" id="marathi">
-          <label class="form-check-label" for="marathi">
-            Marathi
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="nepali" id="nepali">
-          <label class="form-check-label" for="nepali">
-            Nepali
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="oriya" id="oriya">
-          <label class="form-check-label" for="oriya">
-            Oriya
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="punjabi" id="punjabi">
-          <label class="form-check-label" for="punjabi">
-            Punjabi
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="silent" id="silent">
-          <label class="form-check-label" for="silent">
-            Silent
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="sinhalese" id="sinhalese">
-          <label class="form-check-label" for="sinhalese">
-            Sinhalese
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="spanish" id="spanish">
-          <label class="form-check-label" for="spanish">
-            Spanish
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="tamil" id="tamil">
-          <label class="form-check-label" for="tamil">
-            Tamil
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="telegu" id="telegu">
-          <label class="form-check-label" for="telegu">
-            Telegu
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="thai" id="thai">
-          <label class="form-check-label" for="thai">
-            Thai
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="urdu" id="urdu">
-          <label class="form-check-label" for="defaultCheck1">
-            Urdu
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="lang_blank"id="lang_blank">
-          <label class="form-check-label" for="lang_blank">
-            Blank
-          </label><br>
+      <div class="form-check container">
+        <div class="row">
+          <div class="col-lg-4">
+            <h5>Overall Genre</h5>
+            <input class="form-check-input" type="checkbox" value="" name="english_movie" id="english_movie">
+            <label class="form-check-label" for="enlish_movie">
+              English Movie
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="english_tv" id="english_tv">
+            <label class="form-check-label" for="english_tv">
+              English TV Series
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="indian_doc" id="indian_doc">
+            <label class="form-check-label" for="indian_doc">
+              Indian Documentary
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="indian_movie" id="indian_movie">
+            <label class="form-check-label" for="indian_movie">
+              Indian Movie
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="indian_short_doc" id="indian_short_doc">
+            <label class="form-check-label" for="indian_short_doc">
+              Indian Short Documentary
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="indian_short_movie" id="indian_short_movie">
+            <label class="form-check-label" for="defaultCheck1">
+              Indian Short Movie
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="indian_tv" id="indian_tv">
+            <label class="form-check-label" for="indian_tv">
+              Indian TV Series
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="genre_blank" id="genre_blank">
+            <label class="form-check-label" for="genre_blank">
+              Blank
+            </label><br>
+            <h5 style="padding-top: 5px;">Country/ Language Theme</h5>
+            <input class="form-check-input" type="checkbox" value="" name="Santali" id="Santali">
+            <label class="form-check-label" for="Santali">
+              Santali
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="arabic" id="arabic">
+            <label class="form-check-label" for="arabic">
+              Arabic
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="assamesse" id="assamese">
+            <label class="form-check-label" for="assamese">
+              Assamese
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="bengali" id="bengali">
+            <label class="form-check-label" for="bengali">
+              Bengali
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="bhojpuri" id="bhojpuri">
+            <label class="form-check-label" for="bhojpuri">
+              Bhojpuri
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="bodo_assamese"id="bodo_assamese">
+            <label class="form-check-label" for="bodo_assamese">
+              Bodo,Assamese
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="english" id="english">
+            <label class="form-check-label" for="english">
+              English
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="french" id="french">
+            <label class="form-check-label" for="french">
+              French
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="german" id="german">
+            <label class="form-check-label" for="german">
+              German
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="gujarati" id="gujarati">
+            <label class="form-check-label" for="gujarati">
+              Gujarati
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="hebrew" id="hewbrew">
+            <label class="form-check-label" for="hebrew">
+              Hebrew
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="hindi" id="hindi">
+            <label class="form-check-label" for="hindi">
+              Hindi
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="hindi_marathi" id="hindi_marathi">
+            <label class="form-check-label" for="hindi_marathi">
+              Hindi, Marathi
+            </label><br>
+          </div>
+          <div class="col-lg-4">
+            <input class="form-check-input" type="checkbox" value="" name="hindi_assamese" id="hindi_assamese">
+            <label class="form-check-label" for="hindi_assamese">
+              Hindi/Assamese
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="italian" id="italian">
+            <label class="form-check-label" for="italian">
+              Italian
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="kannada" id="kannada">
+            <label class="form-check-label" for="kannada">
+              Kannada
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="khasi" id="khasi">
+            <label class="form-check-label" for="khasi">
+              Khasi
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="konkani" id="konkani">
+            <label class="form-check-label" for="konkani">
+              Konkani
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="maithili" id="maithili">
+            <label class="form-check-label" for="maithili">
+              Maithili
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="malayalam" id="malayalam">
+            <label class="form-check-label" for="defaultCheck1">
+              Malayalam
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="manipuri" id="manipuri">
+            <label class="form-check-label" for="defaultCheck1">
+              Manipuri
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="marathi" id="marathi">
+            <label class="form-check-label" for="marathi">
+              Marathi
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="nepali" id="nepali">
+            <label class="form-check-label" for="nepali">
+              Nepali
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="oriya" id="oriya">
+            <label class="form-check-label" for="oriya">
+              Oriya
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="punjabi" id="punjabi">
+            <label class="form-check-label" for="punjabi">
+              Punjabi
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="silent" id="silent">
+            <label class="form-check-label" for="silent">
+              Silent
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="sinhalese" id="sinhalese">
+            <label class="form-check-label" for="sinhalese">
+              Sinhalese
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="spanish" id="spanish">
+            <label class="form-check-label" for="spanish">
+              Spanish
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="tamil" id="tamil">
+            <label class="form-check-label" for="tamil">
+              Tamil
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="telegu" id="telegu">
+            <label class="form-check-label" for="telegu">
+              Telegu
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="thai" id="thai">
+            <label class="form-check-label" for="thai">
+              Thai
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="urdu" id="urdu">
+            <label class="form-check-label" for="defaultCheck1">
+              Urdu
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="lang_blank"id="lang_blank">
+            <label class="form-check-label" for="lang_blank">
+              Blank
+            </label><br>
+          </div>
+          <div class="col-lg-4">
+            <h5>Production Genre</h5>
+            <input class="form-check-input" type="checkbox" value="" name="prod_Art_House"id="prod_Art_House">
+            <label class="form-check-label" for="prod_Art_House">
+              Art House Cinema
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="prod_commercial" id="prod_commercial">
+            <label class="form-check-label" for="prod_commercial">
+              Commercial
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="prod_doc" id="prod_doc">
+            <label class="form-check-label" for="prod_doc">
+              Documentary
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="prod_blank" id="prod_blank">
+            <label class="form-check-label" for="prod_blank">
+              Blank
+            </label><br>
+            <h5 style="padding-top: 5px;">Watched By Chai With Papa</h5>
+            <input class="form-check-input" type="checkbox" value="" name="watched_yes" id="watched_yes">
+            <label class="form-check-label" for="watched_yes">
+              Yes
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="watched_no" id="watched_no">
+            <label class="form-check-label" for="watched_no">
+              No
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="watched_queue" id="watched_queue">
+            <label class="form-check-label" for="watched_queue">
+              In Queue
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="watched_blank" id="watched_blank">
+            <label class="form-check-label" for="watched_blank">
+              Blank
+            </label><br>
+            <h5 style="padding-top: 5px;">Included in Top Ranked</h5>
+            <input class="form-check-input" type="checkbox" value="" name="top_ranked" id="top_ranked">
+            <label class="form-check-label" for="top_ranked">
+              Yes
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="top_ranked_no" id="top_ranked_no">
+            <label class="form-check-label" for="top_ranked_no">
+              No
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="top_ranked_blank" id="top_ranked_blank">
+            <label class="form-check-label" for="top_ranked_blank">
+              Blank
+            </label><br>
+            <h5>DVD Available</h5>
+            <input class="form-check-input" type="checkbox" value="" name="dvd_yes" id="dvd_yes">
+            <label class="form-check-label" for="dvd_yes">
+              Yes
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="dvd_no" id="dvd_no">
+            <label class="form-check-label" for="dvd_no">
+              No
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="dvd_blank" id="dvd_blank">
+            <label class="form-check-label" for="dvd_blank">
+              Blank
+            </label><br>
+            <h5 style="padding-top: 5px;">Platform To View Title</h5>
+            <input class="form-check-input" type="checkbox" value="" name="amazon" id="amazon">
+            <label class="form-check-label" for="amazon">
+              Amazon
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="youtube" id="youtube">
+            <label class="form-check-label" for="youtube">
+              Youtube
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="netflix" id="netflix">
+            <label class="form-check-label" for="netflix">
+              Netflix
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="movie_saints" id="movie_saints">
+            <label class="form-check-label" for="movie_saints">
+              Movie Saints
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="mubi" id="mubi">
+            <label class="form-check-label" for="mubi">
+              Mubi
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" name="cinemas_of_india" id="cinemas_of_india">
+            <label class="form-check-label" for="cinemas_of_india">
+              Cinemas of India
+            </label><br>
+          </div>
         </div>
-        <div class="col-lg-3">
-          <h5>Production Genre</h5>
-          <input class="form-check-input" type="checkbox" value="" name="prod_Art_House"id="prod_Art_House">
-          <label class="form-check-label" for="prod_Art_House">
-            Art House Cinema
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="prod_commercial" id="prod_commercial">
-          <label class="form-check-label" for="prod_commercial">
-            Commercial
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="prod_doc" id="prod_doc">
-          <label class="form-check-label" for="prod_doc">
-            Documentary
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="prod_blank" id="prod_blank">
-          <label class="form-check-label" for="prod_blank">
-            Blank
-          </label><br>
-          <h5>Watched By Chai With Papa</h5>
-          <input class="form-check-input" type="checkbox" value="" name="watched_yes" id="watched_yes">
-          <label class="form-check-label" for="watched_yes">
-            Yes
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="watched_no" id="watched_no">
-          <label class="form-check-label" for="watched_no">
-            No
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="watched_queue" id="watched_queue">
-          <label class="form-check-label" for="watched_queue">
-            In Queue
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="watched_blank" id="watched_blank">
-          <label class="form-check-label" for="watched_blank">
-            Blank
-          </label><br>
-          <h5>Included in Top Ranked</h5>
-          <input class="form-check-input" type="checkbox" value="" name="top_ranked_yes" id="top_ranked">
-          <label class="form-check-label" for="top_ranked">
-            Yes
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="top_ranked_no" id="top_ranked_no">
-          <label class="form-check-label" for="top_ranked_no">
-            No
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="top_ranked_blank" id="top_ranked_blank">
-          <label class="form-check-label" for="top_ranked_blank">
-            Blank
-          </label><br>
-          <h5>DVD Available</h5>
-          <input class="form-check-input" type="checkbox" value="" name="dvd_yes" id="dvd_yes">
-          <label class="form-check-label" for="dvd_yes">
-            Yes
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="dvd_no" id="dvd_no">
-          <label class="form-check-label" for="dvd_no">
-            No
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="dvd_blank" id="dvd_blank">
-          <label class="form-check-label" for="dvd_blank">
-            Blank
-          </label><br>
-          <h5>Platform To View Title</h5>
-          <input class="form-check-input" type="checkbox" value="" name="amazon" id="amazon">
-          <label class="form-check-label" for="amazon">
-            Amazon
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="youtube" id="youtube">
-          <label class="form-check-label" for="youtube">
-            Youtube
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="netflix" id="netflix">
-          <label class="form-check-label" for="netflix">
-            Netflix
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="hulu" id="hulu">
-          <label class="form-check-label" for="hulu">
-            Hulu
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="movie_saints" id="movie_saints">
-          <label class="form-check-label" for="movie_saints">
-            Movie Saints
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="mubi" id="mubi">
-          <label class="form-check-label" for="mubi">
-            Mubi
-          </label><br>
-          <input class="form-check-input" type="checkbox" value="" name="cinemas_of_india" id="cinemas_of_india">
-          <label class="form-check-label" for="cinemas_of_india">
-            Cinemas of India
-          </label><br>
-
-        </div>
-      </div>
-      <input type="button" value="Fuck" onclick="validateForm()">
+        <button type="button" class="btn btn-primary onclick="validateForm()">Search Advanced Fields</button>
+        <!-- <input type="button" value="ope" onclick="validateForm()"> -->
     </div>
-  </form>
+    </form>
       <div class="limiter" style="margin-top: 20px;">
     		<div class="container-table100">
     			<div class="wrap-table100">

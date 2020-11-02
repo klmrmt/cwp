@@ -10,9 +10,48 @@
   <link rel="stylesheet" href="css/index.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+  <script>
+    $(document).ready(function() {
+      if (sessionStorage.getItem('#myModal') !== 'true') {
+        $('#myModal').modal('show');
+        sessionStorage.setItem('#myModal','true');
+      }
+    });
+  </script>
+
+  <!-- Onload Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Complete before entering website</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="checkbox" id="privacy">
+            <label for="html">I have read the <a class ="aModal" href="documents/ChaiWithPapa Privacy Policy 11_1_2020.docx">Privacy Agreement</a></label>
+          </div>
+          <div class="form-group">
+            <input type="checkbox" id="terms">
+            <label for="css">I have read the <a class = "aModal" href="documents/ChaiWithPapa Terms&Conditions Policy 11_1_2020.docx">Terms & Conditions</a></label>
+          </div>
+          <div class="form-group">
+            <input type="checkbox" id="age">
+            <label for="javascript">I am 18 years or older</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
 
 
 
@@ -42,9 +81,9 @@
   <div class="container-fluid">
     <div id="mySidenav" class="sidenav">
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-       <a href="extrainfo.html">International Film Festivals</a>
-       <a href="#">Recently Added Titles/ Trailers</a>
-       <a href="#">Additional Information</a>
+       <a href="internationalfilms.html">International Film Festivals</a>
+       <a href="recentlyadded.html">Recently Added Titles/ Trailers</a>
+       <a href="extrainfo.html">Additional Information</a>
     </div>
     <span style="font-size: 30px; cursor: pointer; padding-left: 20px;" onclick="openNav()">&#9776;</span>
   </div>
@@ -122,8 +161,8 @@
 
   <footer class="footer" style="margin-top: 25px; padding-top: 25px; padding-bottom: 25px;">
     <div class="container">
-      <a href="#"><p class="p1">Terms & Conditions </p></a>
-      <a href="#"><p class="p1">Privacy Terms</p></a>
+      <a href="documents/ChaiWithPapa Terms&Conditions Policy 11_1_2020.docx"><p class="p1">Terms & Conditions </p></a>
+      <a href="documents/ChaiWithPapa Privacy Policy 11_1_2020.docx"><p class="p1">Privacy Terms</p></a>
 
     </div>
   </footer>
@@ -139,7 +178,6 @@
   }
 </script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
