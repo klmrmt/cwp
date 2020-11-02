@@ -8,6 +8,7 @@ var io = require('socket.io')(server);
 let objectInterface = new Map();
 
 const searchMap = {
+    // Overall Genre
     english_movie: {key:'overall_genre', value:'english movie'},
     english_tv: {key:'overall_genre', value:'english tv'},
     indian_doc: {key:'overall_genre', value:'indian documentary'},
@@ -15,18 +16,72 @@ const searchMap = {
     indian_short_doc: {key:'overall_genre', value:'indian short documentary'},
     indian_short_movie: {key:'overall_genre', value:'indian short movie'},
     indian_tv: {key:'overall_genre', value:'indian tv'},
-    watched_by_cwp: {key:'watched_by_cwp', value:'yes'},
-    art_house: {key:'production_genre', value:'Art House'},
-    commercial: {key:'production_genre', value:'commercial'},
-    documentary: {key:'production_genre', value:'documentary'},
+    genre_blank: {key:'overall_genre', value:''},
+    // Watched by CWP
+    watched_no: {key:'watched_by_cwp', value:'no'},
+    watched_yes: {key:'watched_by_cwp', value:'yes'},
+    watched_blank: {key:'watched_by_cwp', value:''},
+    // Production Genre
+    prod_Art_House: {key:'production_genre', value:'Art House'},
+    prod_commercial: {key:'production_genre', value:'commercial'},
+    prod_doc: {key:'production_genre', value:'documentary'},
+    prod_blank: {key:'production_genre', value:''},
+    // Languages
     hindi: {key:'language', value:'hindi'},
     english: {key:'language', value:'english'},
     bengali: {key:'language', value:'bengali'},
-    dvd_available: {key:'dvd_available', value:'yes'},
-    top_ranked: {key:'include_in_top', value:'yes'},
+    arabic: {key:'language', value:'arabic'},
+    assamesse: {key:'language', value:'assamesse'},
+    bhojpuri: {key:'language', value:'bhojpuri'},
+    bodo_assamese: {key:'language', value:'bodo, assamese'},
+    french: {key:'language', value:'french'},
+    german: {key:'language', value:'german'},
+    gujarati: {key:'language', value:'gujarati'},
+    hebrew: {key:'language', value:'hebrew'},
+    hindi_assamese: {key:'language', value:'hindi/assamese'},
+    hindi_marathi: {key:'language', value:'hindi, marathi'},
+    italian: {key:'language', value:'italian'},
+    kannada: {key:'language', value:'kannada'},
+    khasi: {key:'language', value:'khasi'},
+    konkani: {key:'language', value:'konkani'},
+    lang_blank: {key:'language', value:''},
+    maithili: {key:'language', value:'maithili'},
+    malayalam: {key:'language', value:'malayalam'},
+    manipuri: {key:'language', value:'manipuri'},
+    marathi: {key:'language', value:'marathi'},
+    nepali: {key:'language', value:'nepali'},
+    oriya: {key:'language', value:'oriya'},
+    punjabi: {key:'language', value:'punjabi'},
+    sinhalese: {key:'language', value:'sinhalese'},
+    spanish: {key:'language', value:'spanish'},
+    tamil: {key:'language', value:'tamil'},
+    telegu: {key:'language', value:'telegu'},
+    thai: {key:'language', value:'thai'},
+    urdu: {key:'language', value:'urdu'},
+    hebrew: {key:'language', value:'hebrew'},
+    hebrew: {key:'language', value:'hebrew'},
+    hebrew: {key:'language', value:'hebrew'},
+    hebrew: {key:'language', value:'hebrew'},
+    hebrew: {key:'language', value:'hebrew'},
+    hebrew: {key:'language', value:'hebrew'},
+    hebrew: {key:'language', value:'hebrew'},
+    hebrew: {key:'language', value:'hebrew'},
+    // DVD Availability
+    dvd_yes: {key:'dvd_available', value:'yes'},
+    dvd_no: {key:'dvd_available', value:'no'},
+    dvd_blank: {key:'dvd_available', value:''},
+    // Top ranked
+    top_ranked_yes: {key:'include_in_top', value:'yes'},
+    top_ranked_no: {key:'include_in_top', value:'no'},
+    top_ranked_blank: {key:'include_in_top', value:''},
+    // Where to watch
     amazon: {key:'platforms', value:'amazon'},
     netflix: {key:'platforms', value:'netflix'},
     hulu: {key:'platforms', value:'hulu'},
+    youtube: {key:'platforms', value:'youtube'},
+    mubi: {key:'platforms', value:'mubi'},
+    cinemas_of_india: {key:'platforms', value:'cinemas'},
+    movie_saints: {key:'platforms', value:'saints'},
 }
 
 const xlsxFile = require('read-excel-file/node');
@@ -227,6 +282,7 @@ xlsxFile('./chaiwithpapa.xlsx').then((rows) => {
 });
 
 function filterMap(hashMap, searchParam, searchTerm) {
+    //console.log(searchTerm);
     // TODO: Recursive loop through iteration object on dynamic search criteria
     // TODO: Decision matrix against preset search fields
     // TODO: JSON.Stringify? Number parser for <=> operations
@@ -235,7 +291,11 @@ function filterMap(hashMap, searchParam, searchTerm) {
     const filtered = new Map([...hashMap].filter(([key, value]) => {
         // Return key value pair to hashMap that fits search criteria
         try {
-            return value[searchParam].toString().toLowerCase().includes(searchTerm.toLowerCase());
+            if (searchTerm === '') {
+                return value[searchParam] === null;
+            } else {
+                return value[searchParam].toString().toLowerCase().includes(searchTerm.toLowerCase());
+            }
         } catch { /* Null value propogation error */ }
     }));
     // Return total filtered map to locale called
@@ -249,7 +309,7 @@ async function recursiveSearch(object) {
             let key = property;
             let value = object[property];
 
-            if (value) {
+            if (value === true) {
                 let map = filterMap(objectInterface, searchMap[key].key, searchMap[key].value);
                 recursiveMap.push(map);
             }

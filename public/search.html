@@ -123,7 +123,7 @@
             Blank
           </label><br>
           <h5>Country/ Language Theme</h5>
-          <input class="form-check-input" type="checkbox" value="" name="Santali" id="Santali">
+          <input class="form-check-input" type="checkbox" value="" name="santali" id="santali">
           <label class="form-check-label" for="Santali">
             Santali
           </label><br>
@@ -292,7 +292,7 @@
             Blank
           </label><br>
           <h5>Included in Top Ranked</h5>
-          <input class="form-check-input" type="checkbox" value="" name="top_ranked" id="top_ranked">
+          <input class="form-check-input" type="checkbox" value="" name="top_ranked_yes" id="top_ranked">
           <label class="form-check-label" for="top_ranked">
             Yes
           </label><br>
@@ -329,6 +329,10 @@
           <input class="form-check-input" type="checkbox" value="" name="netflix" id="netflix">
           <label class="form-check-label" for="netflix">
             Netflix
+          </label><br>
+          <input class="form-check-input" type="checkbox" value="" name="hulu" id="hulu">
+          <label class="form-check-label" for="hulu">
+            Hulu
           </label><br>
           <input class="form-check-input" type="checkbox" value="" name="movie_saints" id="movie_saints">
           <label class="form-check-label" for="movie_saints">
@@ -474,7 +478,7 @@
                 object[input.name] = input.checked;
               }
             });
-
+            console.log(object);
             socket.emit('advanced_search', object);
           }
 
