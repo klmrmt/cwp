@@ -459,8 +459,9 @@
           function openTitleWindow(id) {
             setGlobalObjectFromID(id);
             let map = getGlobalObject();
-            window.location.replace('./title-page.html')
-            window.localStorage.setItem('searchedObj',JSON.stringify(map));
+            let url = './title-page.html#' + id.toString();
+            window.location.replace(url);
+            // window.localStorage.setItem('searchedObj',JSON.stringify(map));
           }
 
           function setTableData(map) {

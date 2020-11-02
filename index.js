@@ -406,6 +406,10 @@ io.on('connection', function (socket) {
         transitArray.push(filterMap(objectInterface, 'title', data));
         socket.emit('search_bar_response', Array.from(transitArray[0]));
     });
+    socket.on('get_by_id', function(data) {
+        let transitMap = JSON.stringify(objectInterface.get(data.toString()));
+        socket.emit('get_by_id_result', transitMap);
+    });
 });
 
 app.use(express.static(__dirname + '/public'));
