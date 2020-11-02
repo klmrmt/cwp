@@ -83,18 +83,18 @@
     <br/>
 	  <div class="row justify-content-center" style="padding-top: 25px; padding-bottom: 25px;">
                         <div class="col-12 col-md-10 col-lg-8">
-                            <form class="card card-sm">
+                            <form class="card card-sm" name="searchTitleForm">
                                 <div class="card-body row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <i class="fas fa-search h4 text-body"></i>
                                     </div>
                                     <!--end of col-->
                                     <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                                        <input class="form-control form-control-lg form-control-borderless" id="searchBar" type="search" placeholder="Search by title">
                                     </div>
                                     <!--end of col-->
                                     <div class="col-auto">
-                                        <button class="btn btn-lg btn-success" type="submit">Search</button>
+                                        <button class="btn btn-lg btn-success" type="button" onClick="validateSearchForm()">Search</button>
                                     </div>
                                     <!--end of col-->
                                 </div>
@@ -445,8 +445,15 @@
             });
             setGlobalMap(map);
             setTableData(getGlobalMap());
+          });
 
-
+          socket.on('search_bar_response', function (data) {
+            var map = new Map();
+            data.forEach((result) => {
+              map.set(result[0], result[1]);
+            });
+            setGlobalMap(map);
+            setTableData(getGlobalMap());
           });
 
           function openTitleWindow(id) {
@@ -504,8 +511,12 @@
                 }
               }
             });
-            console.log(object);
             socket.emit('advanced_search', object);
+          }
+
+          function validateSearchForm() {
+            let searchTerm = document.getElementById('searchBar').value;
+            socket.emit('search_bar_search', searchTerm);
           }
 
         </script>

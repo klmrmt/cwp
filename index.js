@@ -387,7 +387,7 @@ io.on('connection', function (socket) {
     socket.on('advanced_search', function(data) {
         // If no checkboxes ticked, don't search (for efficiency)
         if (data.noneChecked) {
-            transitArray = [new Map()];
+            let transitArray = [new Map()];
             socket.emit('advanced_search_response', Array.from(transitArray[0]));
         } else {
             // Recursively search through the data store
@@ -400,6 +400,11 @@ io.on('connection', function (socket) {
                 socket.emit('advanced_search_response', transitArray);
             });
         }
+    });
+    socket.on('search_bar_search', function(data) {
+        let transitArray = [];
+        transitArray.push(filterMap(objectInterface, 'title', data));
+        socket.emit('search_bar_response', Array.from(transitArray[0]));
     });
 });
 
