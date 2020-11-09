@@ -401,10 +401,10 @@ io.on('connection', function (socket) {
             });
         }
     });
-    socket.on('search_bar_search', function(data) {
+    socket.on('general_search', function(data) {
         let transitArray = [];
-        transitArray.push(filterMap(objectInterface, 'title', data));
-        socket.emit('search_bar_response', Array.from(transitArray[0]));
+        transitArray.push(filterMap(objectInterface, data.searchParam, data.searchTerm));
+        socket.emit('general_search_response', Array.from(transitArray[0]));
     });
     socket.on('get_by_id', function(data) {
         let transitMap = JSON.stringify(objectInterface.get(data.toString()));

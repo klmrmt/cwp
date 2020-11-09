@@ -18,6 +18,8 @@
 	<link rel="stylesheet" type="text/css" href="css/main-table.css">
   	<link rel="stylesheet" type="text/css" href="css/top-chai.css">
 <!--===============================================================================================-->
+	<script src="/socket.io/socket.io.js"></script>
+  	<script src="./js/responder.js"></script>
 </head>
 <body>
   <!-- Navbar -->
@@ -36,12 +38,15 @@
           <a class="nav-link" href="about-chai.html">About Papa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="search.html">Search Movies</a>
+          <a class="nav-link " href="search.html">General Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="search-advanced.html">Advanced Search</a>
         </li>
       </ul>
     </div>
   </nav>
-
+  <!--  -->
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
@@ -60,47 +65,7 @@
 
 					<div class="table100-body js-pscroll">
 						<table>
-							<tbody>
-								<tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
+							<tbody id="searchTable">
 							</tbody>
 						</table>
 					</div>
@@ -108,7 +73,7 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- footer -->
     <footer class="footer" style="margin-top: 25px; padding-top: 25px; padding-bottom: 25px;">
       <div class="container">
         <a href="#"><p class="p1 afooter">Terms & Conditions </p></a>
@@ -139,6 +104,78 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+		var url = window.location.href;
+		var arr = url.split("/");
+		var result = arr[0] + "//" + arr[2];
+		const socket = io.connect(result);
+		const topCategory = url.split("#");
+
+		const searchTypes = {
+			'indian_art_house': {'prod_Art_House': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_documentaries': {'indian_doc': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_short_doc': {'indian_short_doc': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_short_movie': {'indian_short_movie': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_tv_series': {'indian_tv': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_commercial_movies': {'indian_movie': true, 'prod_commercial': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'english_tv_series': {'english_tv': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'english_commercial_movies': {'english_tv': true, 'prod_commercial': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+		}
+
+		let object = searchTypes[topCategory[1]];
+		socket.emit('advanced_search', object);
+		socket.on('advanced_search_response', function(data) {
+			var map = new Map();
+            data.forEach((result) => {
+              result.forEach((entry) => {
+                map.set(entry[0], entry[1]);
+              })
+            });
+            setGlobalMap(map);
+            setTableData(getGlobalMap());
+		});
+
+		function setTableData(map) {
+            document.getElementById('searchTable').innerHTML = ''
+            const _mapArr = Array.from(map);
+            for (let i = 0; i < _mapArr.length; i++) {
+              var tableNode = document.createElement('tr');
+              tableNode.setAttribute('class', 'row100 body');
+              tableNode.setAttribute('id',_mapArr[i][0])
+              tableNode.setAttribute('onclick','openTitleWindow(this.id)');
+              var tableText1 = document.createElement('td');
+              tableText1.setAttribute('class', 'cell100 column1');
+              var tableText2 = document.createElement('td');
+              tableText2.setAttribute('class', 'cell100 column2');
+              var tableText3 = document.createElement('td');
+              tableText3.setAttribute('class', 'cell100 column3');
+              tableText1.innerHTML = _mapArr[i][1].title;
+              if (_mapArr[i][1].imdb_rating != null) {
+                tableText2.innerHTML = _mapArr[i][1].imdb_rating;
+              } else {
+                tableText2.innerHTML = 'Not Rated';
+              }
+
+              if (_mapArr[i][1].cwp_rating != null) {
+                tableText3.innerHTML = _mapArr[i][1].cwp_rating;
+              } else {
+                tableText3.innerHTML = 'Not Rated';
+              }
+              tableNode.appendChild(tableText1);
+              tableNode.appendChild(tableText2);
+              tableNode.appendChild(tableText3);
+              document.getElementById('searchTable').appendChild(tableNode);
+            }
+		  }
+		  
+		  function openTitleWindow(id) {
+            setGlobalObjectFromID(id);
+            let map = getGlobalObject();
+            let url = './title-page.html#' + id.toString();
+            window.location.replace(url);
+          }
+	
+	</script>
 
 </body>
 </html>
