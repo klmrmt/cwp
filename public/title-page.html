@@ -15,7 +15,14 @@
 </head>
 
 <body>
-
+  <style>
+    .link1{
+      color: black;
+    }
+    .link1:hover{
+      color: blue;
+    }
+  </style>
 
 
   <!-- Navbar -->
@@ -53,7 +60,7 @@
           <tbody>
               <tr>
                 <th>Description of Title (IMDB Link)</th>
-                <td id="objectTitleDesc"></td>
+                <td> <a class="link1" id="objectTitleDesc">External Link</a></td>
               </tr>
               <tr>
                 <th>Overall Genre</th>
@@ -118,7 +125,7 @@
               </tr>
               <tr>
                 <th>Specific Link to View</th>
-                <td id="objectSpecificLink"></td>
+                <td><a class="link1" id="objectSpecificLink">External Link</a></td>
               </tr>
               <tr>
                 <th>DVD Available</th>
@@ -126,7 +133,7 @@
               </tr>
               <tr>
                 <th>Links to Reviews, Interviews, etc</th>
-                <td id="objectLinks"></td>
+                <td ><a class="link1" id="objectLinks">External Link</a></td>
               </tr>
 
           </tbody>
@@ -147,11 +154,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-  var url = window.location.href;
-  var arr = url.split("/");
-  var result = arr[0] + "//" + arr[2];
-  const socket = io.connect(result);
-
   const titleId = url.split("#");
 
   socket.emit('get_by_id', titleId[1]);
@@ -160,7 +162,7 @@
     let jsonString = JSON.parse(data);
     document.getElementById('objectTitle').innerHTML = jsonString.title;
     document.getElementById('objectAlternativeTitle').innerHTML = 'Alternative Title: ' + jsonString.alternate_title;
-    document.getElementById('objectTitleDesc').innerHTML = jsonString.description_of_title;
+    document.getElementById('objectTitleDesc').href = jsonString.description_of_title;
     document.getElementById('objectOverallGenre').innerHTML = jsonString.overall_genre;
     document.getElementById('objectCountryTheme').innerHTML = jsonString.country_theme;
     document.getElementById('objectProductionGenre').innerHTML = jsonString.production_genre;

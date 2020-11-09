@@ -6,7 +6,7 @@ var io = require('socket.io')(server);
 
 // Initial data struct of movie repository
 let objectInterface = new Map();
-const searchTypes = ['overall_genre', 'language', 'production_genre', 'watched_by_cwp', 'include_in_top', 'dvd_available', 'platforms'];
+const searchTypes = ['overall_genre', 'language', 'production_genre', 'watched_by_cwp', 'include_in_top', 'dvd_available', 'platforms', 'country_theme'];
 const searchMap = {
     // Overall Genre
     english_movie: {key:'overall_genre', value:'english movie'},
@@ -27,6 +27,22 @@ const searchMap = {
     prod_commercial: {key:'production_genre', value:'commercial'},
     prod_doc: {key:'production_genre', value:'documentary'},
     prod_blank: {key:'production_genre', value:''},
+    //country/ languages
+    zero: {key: 'country_theme', valueL: '0'},
+    country_afghanistan: {key: 'country_theme', valueL: 'afghanistan'},
+    country_american: {key: 'country_theme', valueL: 'american'},
+    country_arabic: {key: 'country_theme', valueL: 'arabic'},
+    country_brazil: {key: 'country_theme', valueL: 'brazil'},
+    country_english: {key: 'country_theme', valueL: 'english'},
+    country_french: {key: 'country_theme', valueL: 'french'},
+    country_german: {key: 'country_theme', valueL: 'german'},
+    country_hungarian: {key: 'country_theme', valueL: 'hungarian'},
+    country_indian: {key: 'country_theme', valueL: 'indian'},
+    country_isreal: {key: 'country_theme', valueL: 'isreal'},
+    country_italy: {key: 'country_theme', valueL: 'italy'},
+    country_spain: {key: 'country_theme', valueL: 'spain'},
+    country_syria: {key: 'country_theme', valueL: 'syria'},
+    country_thai: {key: 'country_theme', valueL: 'thai'},
     // Languages
     hindi: {key:'language', value:'hindi'},
     english: {key:'language', value:'english'},
