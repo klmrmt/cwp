@@ -3,6 +3,8 @@ var arr = url.split("/");
 var result = arr[0] + "//" + arr[2];
 const socket = io.connect(result);
 
+var show = true;
+
 var globalMap = new Map();
 
 var globalObject;
@@ -99,8 +101,10 @@ function setTableData(map) {
         tableText3.innerHTML = 'Not Rated';
       }
       tableNode.appendChild(tableText1);
-      tableNode.appendChild(tableText2);
-      tableNode.appendChild(tableText3);
+      if (show) {
+        tableNode.appendChild(tableText2);
+        tableNode.appendChild(tableText3);
+      }
       document.getElementById('searchTable').appendChild(tableNode);
     }
 }

@@ -56,8 +56,6 @@
 							<thead>
 								<tr class="row100 head">
 									<th class="cell100 column1">Title</th>
-									<th class="cell100 column2">Rating</th>
-									<th class="cell100 column3">Chai Rating</th>
 								</tr>
 							</thead>
 						</table>
@@ -119,6 +117,7 @@
 
 		let object = searchTypes[topCategory[1]];
 		socket.emit('advanced_search', object);	
+		show = false;
 
 	</script>
 

@@ -175,11 +175,33 @@
     document.getElementById('objectDirectors').innerHTML = jsonString.directors;
     document.getElementById('objectWatchedBy').innerHTML = jsonString.watched_by_cwp;
     document.getElementById('objectCWPComments').innerHTML = jsonString.cwp_comments;
-    document.getElementById('objectCWPRating').innerHTML = jsonString.cwp_rating;
     document.getElementById('objectPlatform').innerHTML = jsonString.platforms;
     document.getElementById('objectSpecificLink').innerHTML = jsonString.link_to_trailer;
     document.getElementById('objectDVDAvailable').innerHTML = jsonString.dvd_available;
     document.getElementById('objectLinks').innerHTML = jsonString.review_links;
+
+    let ratingCups = parseFloat(jsonString.cwp_rating);
+    let hasDecimal = false;
+    var rated = document.getElementById('objectCWPRating');
+    if (ratingCups >= 0) {
+      if (ratingCups % 1 > 0) {
+        hasDecimal = true;
+        ratingCups -= 0.5;
+        ratingCups = parseInt(ratingCups);
+      }
+      for (let i = 0; i < ratingCups; i++) {
+        var imgFull = document.createElement('img');
+        imgFull.src = 'images/black-cup-full.png';
+        rated.appendChild(imgFull);
+      }
+      if (hasDecimal) {
+        var imgHalf = document.createElement('img');
+        imgHalf.src = 'images/half-cup-brown.png';
+        rated.appendChild(imgHalf);
+      }
+    } else {
+      rated.innerHTML = "Not Rated";
+    }
   });  
 
 </script>
