@@ -6,7 +6,7 @@ var io = require('socket.io')(server);
 
 // Initial data struct of movie repository
 let objectInterface = new Map();
-const searchTypes = ['overall_genre', 'language', 'production_genre', 'watched_by_cwp', 'include_in_top', 'dvd_available', 'platforms'];
+const searchTypes = ['overall_genre', 'language', 'production_genre', 'watched_by_cwp', 'include_in_top', 'dvd_available', 'platforms', 'country_theme'];
 const searchMap = {
     // Overall Genre
     english_movie: {key:'overall_genre', value:'english movie'},
@@ -27,6 +27,22 @@ const searchMap = {
     prod_commercial: {key:'production_genre', value:'commercial'},
     prod_doc: {key:'production_genre', value:'documentary'},
     prod_blank: {key:'production_genre', value:''},
+    //country/ languages
+    zero: {key: 'country_theme', value: '0'},
+    country_afghanistan: {key: 'country_theme', value: 'afghanistan'},
+    country_american: {key: 'country_theme', value: 'american'},
+    country_arabic: {key: 'country_theme', value: 'arabic'},
+    country_brazil: {key: 'country_theme', value: 'brazil'},
+    country_english: {key: 'country_theme', value: 'english'},
+    country_french: {key: 'country_theme', value: 'french'},
+    country_german: {key: 'country_theme', value: 'german'},
+    country_hungarian: {key: 'country_theme', value: 'hungarian'},
+    country_indian: {key: 'country_theme', value: 'indian'},
+    country_isreal: {key: 'country_theme', value: 'isreal'},
+    country_italy: {key: 'country_theme', value: 'italy'},
+    country_spain: {key: 'country_theme', value: 'spain'},
+    country_syria: {key: 'country_theme', value: 'syria'},
+    country_thai: {key: 'country_theme', value: 'thai'},
     // Languages
     hindi: {key:'language', value:'hindi'},
     english: {key:'language', value:'english'},
@@ -59,14 +75,6 @@ const searchMap = {
     telegu: {key:'language', value:'telegu'},
     thai: {key:'language', value:'thai'},
     urdu: {key:'language', value:'urdu'},
-    hebrew: {key:'language', value:'hebrew'},
-    hebrew: {key:'language', value:'hebrew'},
-    hebrew: {key:'language', value:'hebrew'},
-    hebrew: {key:'language', value:'hebrew'},
-    hebrew: {key:'language', value:'hebrew'},
-    hebrew: {key:'language', value:'hebrew'},
-    hebrew: {key:'language', value:'hebrew'},
-    hebrew: {key:'language', value:'hebrew'},
     // DVD Availability
     dvd_yes: {key:'dvd_available', value:'yes'},
     dvd_no: {key:'dvd_available', value:'no'},
@@ -117,6 +125,7 @@ xlsxFile('./chaiwithpapa.xlsx').then((rows) => {
         link_to_trailer: null,
         film_festivals: null,
         platforms: null,
+        specific_link: null,
         dvd_available: null,
         review_links: null,
         awards: null,
@@ -124,16 +133,7 @@ xlsxFile('./chaiwithpapa.xlsx').then((rows) => {
         user_comments: null,
         title_reffered_by: null,
         refferer_rating: null,
-        blank_1: null,
-        blank_2: null,
-        blank_3: null,
-        blank_4: null,
-        blank_5: null,
-        blank_6: null,
-        blank_7: null,
-        blank_8: null,
-        blank_9: null,
-        blank_10: null
+        date_added: null,
     };
     for (var j = 0; j < rows.length; j ++) {
         const row = rows[j];
@@ -224,55 +224,31 @@ xlsxFile('./chaiwithpapa.xlsx').then((rows) => {
                     objectField.platforms = row[i];
                     break;
                 case (i = 29):
-                    objectField.dvd_available = row[i];
+                    objectField.specific_link = row[i];
                     break;
                 case (i = 30):
-                    objectField.review_links = row[i];
+                    objectField.dvd_available = row[i];
                     break;
                 case (i = 31):
-                    objectField.awards = row[i];
+                    objectField.review_links = row[i];
                     break;
                 case (i = 32):
-                    objectField.avg_user_rating = row[i];
+                    objectField.awards = row[i];
                     break;
                 case (i = 33):
-                    objectField.user_comments = row[i];
+                    objectField.avg_user_rating = row[i];
                     break;
                 case (i = 34):
-                    objectField.title_reffered_by = row[i];
+                    objectField.user_comments = row[i];
                     break;
                 case (i = 35):
-                    objectField.refferer_rating = row[i];
+                    objectField.title_reffered_by = row[i];
                     break;
                 case (i = 36):
-                    objectField.blank_1 = row[i];
+                    objectField.refferer_rating = row[i];
                     break;
                 case (i = 37):
-                    objectField.blank_2 = row[i];
-                    break;
-                case (i = 38):
-                    objectField.blank_3 = row[i];
-                    break;
-                case (i = 39):
-                    objectField.blank_4 = row[i];
-                    break;
-                case (i = 40):
-                    objectField.blank_5 = row[i];
-                    break;
-                case (i = 41):
-                    objectField.blank_6 = row[i];
-                    break;
-                case (i = 42):
-                    objectField.blank_7 = row[i];
-                    break;
-                case (i = 43):
-                    objectField.blank_8 = row[i];
-                    break;
-                case (i = 44):
-                    objectField.blank_9 = row[i];
-                    break;
-                case (i = 45):
-                    objectField.blank_10 = row[i];
+                    objectField.date_added = row[i];
                     break;
             }
         }
@@ -401,10 +377,10 @@ io.on('connection', function (socket) {
             });
         }
     });
-    socket.on('search_bar_search', function(data) {
+    socket.on('general_search', function(data) {
         let transitArray = [];
-        transitArray.push(filterMap(objectInterface, 'title', data));
-        socket.emit('search_bar_response', Array.from(transitArray[0]));
+        transitArray.push(filterMap(objectInterface, data.searchParam, data.searchTerm));
+        socket.emit('general_search_response', Array.from(transitArray[0]));
     });
     socket.on('get_by_id', function(data) {
         let transitMap = JSON.stringify(objectInterface.get(data.toString()));

@@ -18,11 +18,13 @@
 	<link rel="stylesheet" type="text/css" href="css/main-table.css">
   	<link rel="stylesheet" type="text/css" href="css/top-chai.css">
 <!--===============================================================================================-->
+	<script src="/socket.io/socket.io.js"></script>
+  	<script src="./js/responder.js"></script>
 </head>
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="padding-top: 0; padding-bottom: 0;">
-    <a class="navbar-brand" href="#"><img class="logo-nav" src="images/logo-blue.png" alt=""></a>
+    <a class="navbar-brand" href="index.html"><img class="logo-nav" src="images/logo-blue.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,12 +38,15 @@
           <a class="nav-link" href="about-chai.html">About Papa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="search.html">Search Movies</a>
+          <a class="nav-link " href="search.html">General Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="search-advanced.html">Advanced Search</a>
         </li>
       </ul>
     </div>
   </nav>
-
+  <!--  -->
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
@@ -51,8 +56,6 @@
 							<thead>
 								<tr class="row100 head">
 									<th class="cell100 column1">Title</th>
-									<th class="cell100 column2">Rating</th>
-									<th class="cell100 column3">Chai Rating</th>
 								</tr>
 							</thead>
 						</table>
@@ -60,55 +63,15 @@
 
 					<div class="table100-body js-pscroll">
 						<table>
-							<tbody>
-								<tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-                <tr class="row100 body">
-									<td class="cell100 column1"></td>
-									<td class="cell100 column2"></td>
-									<td class="cell100 column3"></td>
-								</tr>
-							</tbody>
+							<u><tbody id="searchTable">
+							</tbody></u>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<!-- footer -->
     <footer class="footer" style="margin-top: 25px; padding-top: 25px; padding-bottom: 25px;">
       <div class="container">
         <a href="#"><p class="p1 afooter">Terms & Conditions </p></a>
@@ -139,6 +102,24 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+		const topCategory = url.split("#");
+		const searchTypes = {
+			'indian_art_house': {'prod_Art_House': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_documentaries': {'indian_doc': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_short_doc': {'indian_short_doc': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_short_movie': {'indian_short_movie': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_tv_series': {'indian_tv': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'indian_commercial_movies': {'indian_movie': true, 'prod_commercial': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'english_tv_series': {'english_tv': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+			'english_commercial_movies': {'english_tv': true, 'prod_commercial': true, 'top_ranked_yes': true, 'noneChecked': false, 'allChecked': true},
+		}
+
+		let object = searchTypes[topCategory[1]];
+		socket.emit('advanced_search', object);	
+		show = false;
+
+	</script>
 
 </body>
 </html>

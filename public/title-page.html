@@ -15,12 +15,19 @@
 </head>
 
 <body>
-
+  <style>
+    .link1{
+      color: black;
+    }
+    .link1:hover{
+      color: blue;
+    }
+  </style>
 
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="padding-top: 0; padding-bottom: 0;">
-    <a class="navbar-brand" href="#"><img class="logo-nav" src="images/logo-blue.png" alt=""></a>
+    <a class="navbar-brand" href="index.html"><img class="logo-nav" src="images/logo-blue.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,7 +41,10 @@
           <a class="nav-link" href="about-chai.html">About Papa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="search.html">Search Movies</a>
+          <a class="nav-link " href="search.html">General Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="search-advanced.html">Advanced Search</a>
         </li>
       </ul>
     </div>
@@ -50,7 +60,7 @@
           <tbody>
               <tr>
                 <th>Description of Title (IMDB Link)</th>
-                <td id="objectTitleDesc"></td>
+                <td> <a class="link1" id="objectTitleDesc">External Link</a></td>
               </tr>
               <tr>
                 <th>Overall Genre</th>
@@ -115,7 +125,7 @@
               </tr>
               <tr>
                 <th>Specific Link to View</th>
-                <td id="objectSpecificLink"></td>
+                <td><a class="link1" id="objectSpecificLink">External Link</a></td>
               </tr>
               <tr>
                 <th>DVD Available</th>
@@ -123,7 +133,7 @@
               </tr>
               <tr>
                 <th>Links to Reviews, Interviews, etc</th>
-                <td id="objectLinks"></td>
+                <td ><a class="link1" id="objectLinks">External Link</a></td>
               </tr>
 
           </tbody>
@@ -144,11 +154,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-  var url = window.location.href;
-  var arr = url.split("/");
-  var result = arr[0] + "//" + arr[2];
-  const socket = io.connect(result);
-
   const titleId = url.split("#");
 
   socket.emit('get_by_id', titleId[1]);
@@ -157,7 +162,7 @@
     let jsonString = JSON.parse(data);
     document.getElementById('objectTitle').innerHTML = jsonString.title;
     document.getElementById('objectAlternativeTitle').innerHTML = 'Alternative Title: ' + jsonString.alternate_title;
-    document.getElementById('objectTitleDesc').innerHTML = jsonString.description_of_title;
+    document.getElementById('objectTitleDesc').href = jsonString.description_of_title;
     document.getElementById('objectOverallGenre').innerHTML = jsonString.overall_genre;
     document.getElementById('objectCountryTheme').innerHTML = jsonString.country_theme;
     document.getElementById('objectProductionGenre').innerHTML = jsonString.production_genre;
@@ -170,11 +175,33 @@
     document.getElementById('objectDirectors').innerHTML = jsonString.directors;
     document.getElementById('objectWatchedBy').innerHTML = jsonString.watched_by_cwp;
     document.getElementById('objectCWPComments').innerHTML = jsonString.cwp_comments;
-    document.getElementById('objectCWPRating').innerHTML = jsonString.cwp_rating;
     document.getElementById('objectPlatform').innerHTML = jsonString.platforms;
     document.getElementById('objectSpecificLink').innerHTML = jsonString.link_to_trailer;
     document.getElementById('objectDVDAvailable').innerHTML = jsonString.dvd_available;
     document.getElementById('objectLinks').innerHTML = jsonString.review_links;
+
+    let ratingCups = parseFloat(jsonString.cwp_rating);
+    let hasDecimal = false;
+    var rated = document.getElementById('objectCWPRating');
+    if (ratingCups >= 0) {
+      if (ratingCups % 1 > 0) {
+        hasDecimal = true;
+        ratingCups -= 0.5;
+        ratingCups = parseInt(ratingCups);
+      }
+      for (let i = 0; i < ratingCups; i++) {
+        var imgFull = document.createElement('img');
+        imgFull.src = 'images/black-cup-full.png';
+        rated.appendChild(imgFull);
+      }
+      if (hasDecimal) {
+        var imgHalf = document.createElement('img');
+        imgHalf.src = 'images/half-cup-brown.png';
+        rated.appendChild(imgHalf);
+      }
+    } else {
+      rated.innerHTML = "Not Rated";
+    }
   });  
 
 </script>
