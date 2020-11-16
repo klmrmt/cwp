@@ -91,6 +91,33 @@ const searchMap = {
     mubi: {key:'platforms', value:'mubi'},
     cinemas_of_india: {key:'platforms', value:'cinemas'},
     movie_saints: {key:'platforms', value:'saints'},
+    voot: {key:'platforms', value:'voot'}, 
+    shemaroo: {key:'platforms', value:'shemaroo'}, 
+    zee5: {key:'platforms', value:'zee5'}, 
+    zoomtv: {key:'platforms', value:'zoomtv'}, 
+    hotstar: {key:'platforms', value:'hotstar'}, 
+    sonyliv: {key:'platforms', value:'sonyliv'}, 
+    vootselect: {key:'platforms', value:'VootSelect'}, 
+    erosnow: {key:'platforms', value:'erosnow'}, 
+    cinemapreneur: {key:'platforms', value:'cinemapreneur'},
+    tubitv: {key:'platforms', value:'tubitv'},
+    appletv: {key:'platforms', value:'Apple TV'},
+    indiepixunlimited: {key:'platforms', value:'indiepixunlimited'},
+    acorn: {key:'platforms', value:'acorn'},
+    disney: {key:'platforms', value:'disney'},
+    altbalaji: {key:'platforms', value:'altbalaji'},
+    fandor: {key:'platforms', value:'fandor'},
+    hbo: {key:'platforms', value:'hbo'},
+    here: {key:'platforms', value:'here'},
+    mxplayer: {key:'platforms', value:'mxplayer'},
+    sho: {key:'platforms', value:'sho'},
+    starz: {key:'platforms', value:'starz'},
+    twn: {key:'platforms', value:'twn'},
+    pbs: {key:'platforms', value:'pbs'},
+
+
+    blank_link: {key:'platforms', value:''}
+
 }
 
 const xlsxFile = require('read-excel-file/node');

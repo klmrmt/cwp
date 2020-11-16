@@ -84,6 +84,7 @@ function setTableData(map) {
       tableNode.setAttribute('onclick','openTitleWindow(this.id)');
       var tableText1 = document.createElement('td');
       tableText1.setAttribute('class', 'cell100 column1');
+      tableText1.style.textDecoration = "underline";
       var tableText2 = document.createElement('td');
       tableText2.setAttribute('class', 'cell100 column2');
       var tableText3 = document.createElement('td');
